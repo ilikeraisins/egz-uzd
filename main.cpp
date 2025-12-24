@@ -1,4 +1,4 @@
-#include "main.h"
+﻿#include "main.h"
 
 #include <iostream>
 
@@ -7,6 +7,7 @@ int main()
     int choice;
     cout << "Dalis: ";
     std::cin >> choice;
+    cout << endl;
 
     //map<string, int> words;
     std::stringstream buffer = read_file("history.txt");
@@ -55,7 +56,7 @@ int main()
 
         }
 
-        //write_file(map, "map.txt");
+        //write_file(map, "žodiai.txt");
     }
     else if (choice == 2) {
         map<string, vector<int>> map;
@@ -98,6 +99,47 @@ int main()
             else break;
         };
         table(map);
+    }
+    else if (choice == 3) {
+        vector<string> urls;
+        string word;
+
+        while (buffer) {
+            if (!buffer.eof()) {
+                buffer >> word;
+
+                if (word.find("https://") != string::npos or word.find("www.") != string::npos) {
+                 
+                    while (!word.empty()) {
+                        if (std::isalpha(word.front(), loc) == 0) {
+                            word.erase(0, 1);
+                        }
+                        else if (std::isalpha(word.back(), loc) == 0) {
+                            if (word.back() != '/') {
+                                word.pop_back();
+                            }
+                            else {
+                                break;
+                            }
+                            
+                        }
+                        else {
+                            break;
+                        }
+                    }
+
+                    urls.push_back(word);
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        for (string i : urls) {
+            cout << i << endl;
+        }
+
     }
 
 }
