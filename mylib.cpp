@@ -20,15 +20,7 @@ bool ar_zodis(string word) {
     return true;
 }
 
-void sutvarkyti(string& word) {
-    std::locale loc("LT.UTF-8");
-    while (std::isalpha(word.front(), loc) == 0) {
-        word.erase(0, 1);
-    }
-    while (std::isalpha(word.back(), loc) == 0) {
-        word.pop_back();
-    }
-}
+
 
 void failo_isvedimas(map<string,int> words, string failo_vardas) {
     string visas;
