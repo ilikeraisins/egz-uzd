@@ -57,5 +57,47 @@ int main()
 
         //write_file(map, "map.txt");
     }
+    else if (choice == 2) {
+        map<string, vector<int>> map;
+
+        string word;
+        string line;
+        int line_nr = 1;
+
+        while (buffer) {
+            if (!buffer.eof()) {
+                std::getline(buffer, line);
+
+                std::stringstream words(line);
+                while (words >> word) {
+
+                    while (!word.empty()) {
+                        if (std::isalpha(word.front(), loc) == 0) {
+                            word.erase(0, 1);
+                        }
+                        else if (std::isalpha(word.back(), loc) == 0) {
+                            word.pop_back();
+                        }
+                        else {
+                            break;
+                        }
+                    }
+
+                    if (word != "") {
+                        if (map.find(word) != map.end()) {
+                            if (find(map[word].begin(), map[word].end(), line_nr) == map[word].end())
+                                map[word].push_back(line_nr);
+                        }
+                        else {
+                            map.insert({ word,{line_nr} });
+                        }
+                    }
+                }
+                line_nr++;
+            }
+            else break;
+        };
+        table(map);
+    }
 
 }

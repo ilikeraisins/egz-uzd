@@ -21,3 +21,22 @@ void write_file(map<string,int> words, string file_name) {
     out_f << str;
     out_f.close();
 }
+
+void table(map<string, vector<int>> map) {
+    cout << left << std::setw(15) << "Word" << " | " << std::setw(30) << "Lines" << endl;
+
+    for (int i = 0; i < 60; i++) {
+        cout << "-";
+    }
+    cout << endl;
+
+    for (auto i : map) {
+        if (i.second.size() > 1) {
+            cout << left << std::setw(15) << i.first << " | ";
+            for (int j : i.second) {
+                cout << j << " ";
+            }
+            cout << endl;
+        }
+    }
+}
