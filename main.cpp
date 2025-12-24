@@ -1,20 +1,52 @@
-// papildoma.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include "main.h"
 
 #include <iostream>
 
 int main()
-{
-    std::cout << "Hello World!\n";
+{   
+    map<string, int> words;
+    std::stringstream buffer = failo_skaitimas("history.txt");
+    string word;
+
+    while (buffer) {
+        if (!buffer.eof()) {
+            buffer >> word;
+            std::locale loc("en_US.UTF-8");
+            
+            
+            while (!word.empty()) {
+                if (std::isalpha(word.front(), loc) == 0) {
+                    word.erase(0, 1);
+                }
+                else if(std::isalpha(word.back(), loc) == 0) {
+                    word.pop_back();
+                }
+                else {
+                    break;
+                 }
+            }
+         
+            if (ar_zodis(word) and word != "") {
+                if (words.find(word) != words.end()) {
+                    words[word] = words[word] + 1;
+                }
+                else {
+                    words.insert({ word,1 });
+                }
+            }
+            
+        }
+        else break;
+    };
+
+    for (auto i : words) {
+        if (i.second > 1) {
+            cout << i.first << " " << i.second << endl;
+        }
+        
+    }
+
+    //failo_isvedimas(words,"sutvarkyti.txt");
+
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
