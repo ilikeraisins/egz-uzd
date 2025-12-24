@@ -51,7 +51,7 @@ int main()
 
         for (auto i : map) {
             if (i.second > 1) {
-                cout << i.first << " " << i.second << endl;
+                cout << left << setw(20) << i.first << " " << i.second << endl;
             }
 
         }
@@ -136,6 +136,7 @@ int main()
             }
         }
 
+        cout << "URL adresai: " << endl << endl;
         for (string i : urls) {
             cout << i << endl;
         }

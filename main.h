@@ -17,6 +17,7 @@ using std::left;
 using std::right;
 using std::map;
 using std::vector;
+using std::setw;
 
 std::stringstream read_file(string);
 void write_file(map<string,int>,string);
