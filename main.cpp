@@ -9,8 +9,7 @@ int main()
     std::cin >> choice;
     cout << endl;
 
-    //map<string, int> words;
-    std::stringstream buffer = read_file("history.txt");
+    std::stringstream buffer = read_file("birds.txt");
     std::locale loc("en_US.UTF-8");
 
     if (choice == 1) {
@@ -20,8 +19,6 @@ int main()
         while (buffer) {
             if (!buffer.eof()) {
                 buffer >> word;
-
-
 
                 while (!word.empty()) {
                     if (std::isalpha(word.front(), loc) == 0) {
@@ -35,8 +32,9 @@ int main()
                     }
                 }
 
-
-                if (word != "") {
+                
+                
+                if (word != "" and word.find("/") == string::npos and word.find(".") == string::npos) {
                     if (map.find(word) != map.end()) {
                         map[word] = map[word] + 1;
                     }
@@ -84,7 +82,7 @@ int main()
                         }
                     }
 
-                    if (word != "") {
+                    if (word != "" and word.find("/") == string::npos and word.find(".") == string::npos) {
                         if (map.find(word) != map.end()) {
                             if (find(map[word].begin(), map[word].end(), line_nr) == map[word].end())
                                 map[word].push_back(line_nr);

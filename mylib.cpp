@@ -8,7 +8,6 @@ std::stringstream read_file(string file_name) {
     return buffer;
 }
 
-
 void write_file(map<string,int> words, string file_name) {
     string str;
     for (auto i: words) {
