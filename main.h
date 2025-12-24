@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <iomanip>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -10,13 +9,11 @@
 #include <locale>
 
 using std::cout;
-using std::cin;
 using std::endl;
 using std::string;
-using std::setw;
 using std::left;
 using std::right;
 using std::map;
 
-std::stringstream failo_skaitimas(string);
-void failo_isvedimas(map<string,int>,string);
+std::stringstream read_file(string);
+void write_file(map<string,int>,string);
