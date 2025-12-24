@@ -8,19 +8,6 @@ std::stringstream failo_skaitimas(string failo_vardas) {
     return buffer;
 }
 
-bool ar_zodis(string word) {
-    std::locale loc("en_US.UTF-8");
-    for (int i = 0; i < word.length(); i++) {
-      
-            if (std::isalpha(word[i],loc) == 0) {
-                return false;
-            }
-        
-    }
-    return true;
-}
-
-
 
 void failo_isvedimas(map<string,int> words, string failo_vardas) {
     string visas;
